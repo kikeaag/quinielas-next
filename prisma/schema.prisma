@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User { 
+  id    Int     @id @default(autoincrement()) 
+  email String  @unique
+  name  String?
+} 
+model League { 
+  id      Int     @id @default(autoincrement()) 
+  name    String
+  year    Int  
+  status  Boolean
+
+  jornadas  Jornada[]  // una liga tiene muchas jornadas
+
+  teams Team[]
+} 
+
+model Jornada {
+  id        Int     @id @default(autoincrement()) 
+  name      String  // jornada 1, cuartos de final ida, final ida
+  status    Boolean
+
+  leagueId  Int
+  league    League  @relation(fields: [leagueId], references: [id])
+  @@unique([leagueId, name])
+
+  matches Match[]
+}
+
+model Match {
+  id           Int   @id @default(autoincrement())
+
+  jornadaId    Int
+  jornadas      Jornada @relation(fields: [jornadaId], references: [id])
+
+  homeTeamId   Int
+  awayTeamId   Int
+
+  homeTeam     Team @relation("HomeTeam", fields: [homeTeamId], references: [id])
+  awayTeam     Team @relation("AwayTeam", fields: [awayTeamId], references: [id])
+
+  betDeadline DateTime // Ultima hora para llenar quiniela
+  matchDate    DateTime
+
+  homeScore    Int?
+  awayScore    Int?
+}
+
+model Team {
+  id     Int     @id @default(autoincrement())
+  name   String
+
+  // Relaciones inversas
+  homeMatches Match[] @relation("HomeTeam")
+  awayMatches Match[] @relation("AwayTeam")
+
+  leagueId  Int
+  league    League  @relation(fields: [leagueId], references: [id])
+}
