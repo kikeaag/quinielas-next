@@ -23,7 +23,47 @@ export * from './enums';
  */
 export type User = Prisma.UserModel
 /**
- * Model Post
+ * Model League
  * 
  */
-export type Post = Prisma.PostModel
+export type League = Prisma.LeagueModel
+/**
+ * Model Jornada
+ * 
+ */
+export type Jornada = Prisma.JornadaModel
+/**
+ * Model Match
+ * 
+ */
+export type Match = Prisma.MatchModel
+/**
+ * Model Team
+ * 
+ */
+export type Team = Prisma.TeamModel
+/**
+ * Model Quiniela
+ * 
+ */
+export type Quiniela = Prisma.QuinielaModel
+/**
+ * Model QuinielaUser
+ * 
+ */
+export type QuinielaUser = Prisma.QuinielaUserModel
+/**
+ * Model Prediction
+ * 
+ */
+export type Prediction = Prisma.PredictionModel
+/**
+ * Model PointsLog
+ * 
+ */
+export type PointsLog = Prisma.PointsLogModel
+/**
+ * Model QuinielaRule
+ * 
+ */
+export type QuinielaRule = Prisma.QuinielaRuleModel

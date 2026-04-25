@@ -5,7 +5,7 @@
 
 generator client {
   provider = "prisma-client"
-  output   = "../app/generated/prisma"
+  output   = "../application/generated/prisma"
 }
 
 datasource db {
@@ -16,6 +16,8 @@ model User {
   id    Int     @id @default(autoincrement()) 
   email String  @unique
   name  String?
+
+  quinielaUsers QuinielaUser[]
 } 
 model League { 
   id      Int     @id @default(autoincrement()) 
@@ -26,6 +28,8 @@ model League {
   jornadas  Jornada[]  // una liga tiene muchas jornadas
 
   teams Team[]
+
+  quinielas Quiniela[]
 } 
 
 model Jornada {
@@ -57,6 +61,12 @@ model Match {
 
   homeScore    Int?
   awayScore    Int?
+
+  hadRedCard Boolean?
+
+  predictions Prediction[]
+
+  pointsLogs PointsLog[]
 }
 
 model Team {
@@ -69,4 +79,113 @@ model Team {
 
   leagueId  Int
   league    League  @relation(fields: [leagueId], references: [id])
+
+  @@unique([name, leagueId])
+}
+
+model Quiniela {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+
+  leagueId    Int
+  league      League   @relation(fields: [leagueId], references: [id])
+
+  startDate   DateTime
+  endDate     DateTime
+
+  inviteCode  String   @unique
+  isPrivate   Boolean  @default(false)
+
+  createdAt   DateTime @default(now())
+
+  users       QuinielaUser[]
+
+  quinielaRules QuinielaRule[]
+}
+
+enum QuinielaRole {
+  ADMIN
+  USER
+}
+
+enum QuinielaUserStatus {
+  ACTIVE
+  REMOVED
+}
+
+model QuinielaUser {
+  id           Int      @id @default(autoincrement())
+
+  userId       Int
+  quinielaId   Int
+
+  user         User     @relation(fields: [userId], references: [id])
+  quiniela     Quiniela @relation(fields: [quinielaId], references: [id])
+
+  totalPoints  Int      @default(0)
+
+  role         QuinielaRole @default(USER)
+  status       QuinielaUserStatus @default(ACTIVE)
+
+  createdAt    DateTime @default(now())
+
+  predictions  Prediction[]
+
+  @@unique([userId, quinielaId])
+  pointsLogs PointsLog[]
+}
+
+model Prediction {
+  id               Int      @id @default(autoincrement())
+
+  quinielaUserId   Int
+  matchId          Int
+
+  quinielaUser     QuinielaUser @relation(fields: [quinielaUserId], references: [id])
+  match            Match        @relation(fields: [matchId], references: [id])
+
+  predictedHome    Int
+  predictedAway    Int
+
+  predictedRedCard Boolean?
+
+  pointsEarned     Int      @default(0)
+
+  createdAt        DateTime @default(now())
+
+  @@unique([quinielaUserId, matchId])
+}
+
+model PointsLog {
+  id               Int      @id @default(autoincrement())
+
+  quinielaUserId   Int
+  matchId          Int?
+
+  quinielaUser     QuinielaUser @relation(fields: [quinielaUserId], references: [id])
+  match            Match?       @relation(fields: [matchId], references: [id])
+
+  points           Int
+  reason           String
+
+  createdAt        DateTime @default(now())
+}
+
+model QuinielaRule {
+  id          Int      @id @default(autoincrement())
+
+  quinielaId  Int
+  quiniela    Quiniela @relation(fields: [quinielaId], references: [id])
+
+  type        RuleType
+  points      Int
+
+  createdAt   DateTime @default(now())
+}
+
+enum RuleType {
+  EXACT_SCORE
+  WINNER
+  RED_CARD
 }

@@ -9,5 +9,13 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/User'
-export type * from './models/Post'
+export type * from './models/League'
+export type * from './models/Jornada'
+export type * from './models/Match'
+export type * from './models/Team'
+export type * from './models/Quiniela'
+export type * from './models/QuinielaUser'
+export type * from './models/Prediction'
+export type * from './models/PointsLog'
+export type * from './models/QuinielaRule'
 export type * from './commonInputTypes'

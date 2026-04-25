@@ -52,7 +52,15 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
-  Post: 'Post'
+  League: 'League',
+  Jornada: 'Jornada',
+  Match: 'Match',
+  Team: 'Team',
+  Quiniela: 'Quiniela',
+  QuinielaUser: 'QuinielaUser',
+  Prediction: 'Prediction',
+  PointsLog: 'PointsLog',
+  QuinielaRule: 'QuinielaRule'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -80,15 +88,113 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
-export const PostScalarFieldEnum = {
+export const LeagueScalarFieldEnum = {
   id: 'id',
-  title: 'title',
-  content: 'content',
-  published: 'published',
-  authorId: 'authorId'
+  name: 'name',
+  year: 'year',
+  status: 'status'
 } as const
 
-export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
+export type LeagueScalarFieldEnum = (typeof LeagueScalarFieldEnum)[keyof typeof LeagueScalarFieldEnum]
+
+
+export const JornadaScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  status: 'status',
+  leagueId: 'leagueId'
+} as const
+
+export type JornadaScalarFieldEnum = (typeof JornadaScalarFieldEnum)[keyof typeof JornadaScalarFieldEnum]
+
+
+export const MatchScalarFieldEnum = {
+  id: 'id',
+  jornadaId: 'jornadaId',
+  homeTeamId: 'homeTeamId',
+  awayTeamId: 'awayTeamId',
+  betDeadline: 'betDeadline',
+  matchDate: 'matchDate',
+  homeScore: 'homeScore',
+  awayScore: 'awayScore',
+  hadRedCard: 'hadRedCard'
+} as const
+
+export type MatchScalarFieldEnum = (typeof MatchScalarFieldEnum)[keyof typeof MatchScalarFieldEnum]
+
+
+export const TeamScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  leagueId: 'leagueId'
+} as const
+
+export type TeamScalarFieldEnum = (typeof TeamScalarFieldEnum)[keyof typeof TeamScalarFieldEnum]
+
+
+export const QuinielaScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  leagueId: 'leagueId',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  inviteCode: 'inviteCode',
+  isPrivate: 'isPrivate',
+  createdAt: 'createdAt'
+} as const
+
+export type QuinielaScalarFieldEnum = (typeof QuinielaScalarFieldEnum)[keyof typeof QuinielaScalarFieldEnum]
+
+
+export const QuinielaUserScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  quinielaId: 'quinielaId',
+  totalPoints: 'totalPoints',
+  role: 'role',
+  status: 'status',
+  createdAt: 'createdAt'
+} as const
+
+export type QuinielaUserScalarFieldEnum = (typeof QuinielaUserScalarFieldEnum)[keyof typeof QuinielaUserScalarFieldEnum]
+
+
+export const PredictionScalarFieldEnum = {
+  id: 'id',
+  quinielaUserId: 'quinielaUserId',
+  matchId: 'matchId',
+  predictedHome: 'predictedHome',
+  predictedAway: 'predictedAway',
+  predictedRedCard: 'predictedRedCard',
+  pointsEarned: 'pointsEarned',
+  createdAt: 'createdAt'
+} as const
+
+export type PredictionScalarFieldEnum = (typeof PredictionScalarFieldEnum)[keyof typeof PredictionScalarFieldEnum]
+
+
+export const PointsLogScalarFieldEnum = {
+  id: 'id',
+  quinielaUserId: 'quinielaUserId',
+  matchId: 'matchId',
+  points: 'points',
+  reason: 'reason',
+  createdAt: 'createdAt'
+} as const
+
+export type PointsLogScalarFieldEnum = (typeof PointsLogScalarFieldEnum)[keyof typeof PointsLogScalarFieldEnum]
+
+
+export const QuinielaRuleScalarFieldEnum = {
+  id: 'id',
+  quinielaId: 'quinielaId',
+  type: 'type',
+  points: 'points',
+  createdAt: 'createdAt'
+} as const
+
+export type QuinielaRuleScalarFieldEnum = (typeof QuinielaRuleScalarFieldEnum)[keyof typeof QuinielaRuleScalarFieldEnum]
 
 
 export const SortOrder = {

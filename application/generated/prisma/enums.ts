@@ -9,7 +9,26 @@
 * 🟢 You can import this file directly.
 */
 
+export const QuinielaRole = {
+  ADMIN: 'ADMIN',
+  USER: 'USER'
+} as const
+
+export type QuinielaRole = (typeof QuinielaRole)[keyof typeof QuinielaRole]
 
 
-// This file is empty because there are no enums in the schema.
-export {}
+export const QuinielaUserStatus = {
+  ACTIVE: 'ACTIVE',
+  REMOVED: 'REMOVED'
+} as const
+
+export type QuinielaUserStatus = (typeof QuinielaUserStatus)[keyof typeof QuinielaUserStatus]
+
+
+export const RuleType = {
+  EXACT_SCORE: 'EXACT_SCORE',
+  WINNER: 'WINNER',
+  RED_CARD: 'RED_CARD'
+} as const
+
+export type RuleType = (typeof RuleType)[keyof typeof RuleType]

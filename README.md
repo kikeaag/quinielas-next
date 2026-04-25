@@ -28,3 +28,15 @@ npx prisma migrate dev --name init
 ```
 npx prisma studio
 ```
+
+## DEV
+1.- Correr
+```
+npx create-db
+```
+
+2.- Correr migraciones 
+3.- Despues de correr migraciones se debe correr:
+```
+npx prisma generate
+```
