@@ -5,7 +5,7 @@
 
 generator client {
   provider = "prisma-client"
-  output   = "../application/generated/prisma"
+  output   = "../generated/prisma"
 }
 
 datasource db {
@@ -72,6 +72,7 @@ model Match {
 model Team {
   id     Int     @id @default(autoincrement())
   name   String
+  logoUrl String?
 
   // Relaciones inversas
   homeMatches Match[] @relation("HomeTeam")
