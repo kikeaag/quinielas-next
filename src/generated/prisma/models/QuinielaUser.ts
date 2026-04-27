@@ -28,21 +28,19 @@ export type AggregateQuinielaUser = {
 
 export type QuinielaUserAvgAggregateOutputType = {
   id: number | null
-  userId: number | null
   quinielaId: number | null
   totalPoints: number | null
 }
 
 export type QuinielaUserSumAggregateOutputType = {
   id: number | null
-  userId: number | null
   quinielaId: number | null
   totalPoints: number | null
 }
 
 export type QuinielaUserMinAggregateOutputType = {
   id: number | null
-  userId: number | null
+  userId: string | null
   quinielaId: number | null
   totalPoints: number | null
   role: $Enums.QuinielaRole | null
@@ -52,7 +50,7 @@ export type QuinielaUserMinAggregateOutputType = {
 
 export type QuinielaUserMaxAggregateOutputType = {
   id: number | null
-  userId: number | null
+  userId: string | null
   quinielaId: number | null
   totalPoints: number | null
   role: $Enums.QuinielaRole | null
@@ -74,14 +72,12 @@ export type QuinielaUserCountAggregateOutputType = {
 
 export type QuinielaUserAvgAggregateInputType = {
   id?: true
-  userId?: true
   quinielaId?: true
   totalPoints?: true
 }
 
 export type QuinielaUserSumAggregateInputType = {
   id?: true
-  userId?: true
   quinielaId?: true
   totalPoints?: true
 }
@@ -205,7 +201,7 @@ export type QuinielaUserGroupByArgs<ExtArgs extends runtime.Types.Extensions.Int
 
 export type QuinielaUserGroupByOutputType = {
   id: number
-  userId: number
+  userId: string
   quinielaId: number
   totalPoints: number
   role: $Enums.QuinielaRole
@@ -238,7 +234,7 @@ export type QuinielaUserWhereInput = {
   OR?: Prisma.QuinielaUserWhereInput[]
   NOT?: Prisma.QuinielaUserWhereInput | Prisma.QuinielaUserWhereInput[]
   id?: Prisma.IntFilter<"QuinielaUser"> | number
-  userId?: Prisma.IntFilter<"QuinielaUser"> | number
+  userId?: Prisma.StringFilter<"QuinielaUser"> | string
   quinielaId?: Prisma.IntFilter<"QuinielaUser"> | number
   totalPoints?: Prisma.IntFilter<"QuinielaUser"> | number
   role?: Prisma.EnumQuinielaRoleFilter<"QuinielaUser"> | $Enums.QuinielaRole
@@ -270,7 +266,7 @@ export type QuinielaUserWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.QuinielaUserWhereInput | Prisma.QuinielaUserWhereInput[]
   OR?: Prisma.QuinielaUserWhereInput[]
   NOT?: Prisma.QuinielaUserWhereInput | Prisma.QuinielaUserWhereInput[]
-  userId?: Prisma.IntFilter<"QuinielaUser"> | number
+  userId?: Prisma.StringFilter<"QuinielaUser"> | string
   quinielaId?: Prisma.IntFilter<"QuinielaUser"> | number
   totalPoints?: Prisma.IntFilter<"QuinielaUser"> | number
   role?: Prisma.EnumQuinielaRoleFilter<"QuinielaUser"> | $Enums.QuinielaRole
@@ -302,7 +298,7 @@ export type QuinielaUserScalarWhereWithAggregatesInput = {
   OR?: Prisma.QuinielaUserScalarWhereWithAggregatesInput[]
   NOT?: Prisma.QuinielaUserScalarWhereWithAggregatesInput | Prisma.QuinielaUserScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"QuinielaUser"> | number
-  userId?: Prisma.IntWithAggregatesFilter<"QuinielaUser"> | number
+  userId?: Prisma.StringWithAggregatesFilter<"QuinielaUser"> | string
   quinielaId?: Prisma.IntWithAggregatesFilter<"QuinielaUser"> | number
   totalPoints?: Prisma.IntWithAggregatesFilter<"QuinielaUser"> | number
   role?: Prisma.EnumQuinielaRoleWithAggregatesFilter<"QuinielaUser"> | $Enums.QuinielaRole
@@ -323,7 +319,7 @@ export type QuinielaUserCreateInput = {
 
 export type QuinielaUserUncheckedCreateInput = {
   id?: number
-  userId: number
+  userId: string
   quinielaId: number
   totalPoints?: number
   role?: $Enums.QuinielaRole
@@ -346,7 +342,7 @@ export type QuinielaUserUpdateInput = {
 
 export type QuinielaUserUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   quinielaId?: Prisma.IntFieldUpdateOperationsInput | number
   totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
   role?: Prisma.EnumQuinielaRoleFieldUpdateOperationsInput | $Enums.QuinielaRole
@@ -358,7 +354,7 @@ export type QuinielaUserUncheckedUpdateInput = {
 
 export type QuinielaUserCreateManyInput = {
   id?: number
-  userId: number
+  userId: string
   quinielaId: number
   totalPoints?: number
   role?: $Enums.QuinielaRole
@@ -375,7 +371,7 @@ export type QuinielaUserUpdateManyMutationInput = {
 
 export type QuinielaUserUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   quinielaId?: Prisma.IntFieldUpdateOperationsInput | number
   totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
   role?: Prisma.EnumQuinielaRoleFieldUpdateOperationsInput | $Enums.QuinielaRole
@@ -394,7 +390,7 @@ export type QuinielaUserOrderByRelationAggregateInput = {
 }
 
 export type QuinielaUserUserIdQuinielaIdCompoundUniqueInput = {
-  userId: number
+  userId: string
   quinielaId: number
 }
 
@@ -410,7 +406,6 @@ export type QuinielaUserCountOrderByAggregateInput = {
 
 export type QuinielaUserAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
   quinielaId?: Prisma.SortOrder
   totalPoints?: Prisma.SortOrder
 }
@@ -437,7 +432,6 @@ export type QuinielaUserMinOrderByAggregateInput = {
 
 export type QuinielaUserSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
   quinielaId?: Prisma.SortOrder
   totalPoints?: Prisma.SortOrder
 }
@@ -619,7 +613,7 @@ export type QuinielaUserScalarWhereInput = {
   OR?: Prisma.QuinielaUserScalarWhereInput[]
   NOT?: Prisma.QuinielaUserScalarWhereInput | Prisma.QuinielaUserScalarWhereInput[]
   id?: Prisma.IntFilter<"QuinielaUser"> | number
-  userId?: Prisma.IntFilter<"QuinielaUser"> | number
+  userId?: Prisma.StringFilter<"QuinielaUser"> | string
   quinielaId?: Prisma.IntFilter<"QuinielaUser"> | number
   totalPoints?: Prisma.IntFilter<"QuinielaUser"> | number
   role?: Prisma.EnumQuinielaRoleFilter<"QuinielaUser"> | $Enums.QuinielaRole
@@ -639,7 +633,7 @@ export type QuinielaUserCreateWithoutQuinielaInput = {
 
 export type QuinielaUserUncheckedCreateWithoutQuinielaInput = {
   id?: number
-  userId: number
+  userId: string
   totalPoints?: number
   role?: $Enums.QuinielaRole
   status?: $Enums.QuinielaUserStatus
@@ -686,7 +680,7 @@ export type QuinielaUserCreateWithoutPredictionsInput = {
 
 export type QuinielaUserUncheckedCreateWithoutPredictionsInput = {
   id?: number
-  userId: number
+  userId: string
   quinielaId: number
   totalPoints?: number
   role?: $Enums.QuinielaRole
@@ -723,7 +717,7 @@ export type QuinielaUserUpdateWithoutPredictionsInput = {
 
 export type QuinielaUserUncheckedUpdateWithoutPredictionsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   quinielaId?: Prisma.IntFieldUpdateOperationsInput | number
   totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
   role?: Prisma.EnumQuinielaRoleFieldUpdateOperationsInput | $Enums.QuinielaRole
@@ -744,7 +738,7 @@ export type QuinielaUserCreateWithoutPointsLogsInput = {
 
 export type QuinielaUserUncheckedCreateWithoutPointsLogsInput = {
   id?: number
-  userId: number
+  userId: string
   quinielaId: number
   totalPoints?: number
   role?: $Enums.QuinielaRole
@@ -781,7 +775,7 @@ export type QuinielaUserUpdateWithoutPointsLogsInput = {
 
 export type QuinielaUserUncheckedUpdateWithoutPointsLogsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   quinielaId?: Prisma.IntFieldUpdateOperationsInput | number
   totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
   role?: Prisma.EnumQuinielaRoleFieldUpdateOperationsInput | $Enums.QuinielaRole
@@ -831,7 +825,7 @@ export type QuinielaUserUncheckedUpdateManyWithoutUserInput = {
 
 export type QuinielaUserCreateManyQuinielaInput = {
   id?: number
-  userId: number
+  userId: string
   totalPoints?: number
   role?: $Enums.QuinielaRole
   status?: $Enums.QuinielaUserStatus
@@ -850,7 +844,7 @@ export type QuinielaUserUpdateWithoutQuinielaInput = {
 
 export type QuinielaUserUncheckedUpdateWithoutQuinielaInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
   role?: Prisma.EnumQuinielaRoleFieldUpdateOperationsInput | $Enums.QuinielaRole
   status?: Prisma.EnumQuinielaUserStatusFieldUpdateOperationsInput | $Enums.QuinielaUserStatus
@@ -861,7 +855,7 @@ export type QuinielaUserUncheckedUpdateWithoutQuinielaInput = {
 
 export type QuinielaUserUncheckedUpdateManyWithoutQuinielaInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  userId?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
   role?: Prisma.EnumQuinielaRoleFieldUpdateOperationsInput | $Enums.QuinielaRole
   status?: Prisma.EnumQuinielaUserStatusFieldUpdateOperationsInput | $Enums.QuinielaUserStatus
@@ -984,7 +978,7 @@ export type $QuinielaUserPayload<ExtArgs extends runtime.Types.Extensions.Intern
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    userId: number
+    userId: string
     quinielaId: number
     totalPoints: number
     role: $Enums.QuinielaRole
@@ -1418,7 +1412,7 @@ export interface Prisma__QuinielaUserClient<T, Null = never, ExtArgs extends run
  */
 export interface QuinielaUserFieldRefs {
   readonly id: Prisma.FieldRef<"QuinielaUser", 'Int'>
-  readonly userId: Prisma.FieldRef<"QuinielaUser", 'Int'>
+  readonly userId: Prisma.FieldRef<"QuinielaUser", 'String'>
   readonly quinielaId: Prisma.FieldRef<"QuinielaUser", 'Int'>
   readonly totalPoints: Prisma.FieldRef<"QuinielaUser", 'Int'>
   readonly role: Prisma.FieldRef<"QuinielaUser", 'QuinielaRole'>
