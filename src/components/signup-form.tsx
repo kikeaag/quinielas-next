@@ -1,3 +1,4 @@
+import { registerAction } from "@/app/actions"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -24,19 +25,24 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form>
+        <form action={registerAction}>
           <FieldGroup>
             <Field>
-              <FieldLabel htmlFor="name">Nombre</FieldLabel>
-              <Input id="name" type="text" placeholder="John Doe" required />
+              <FieldLabel htmlFor="name">Nombre(s)</FieldLabel>
+              <Input name="name" id="name" type="text" placeholder="Tu nombre aquí" required />
             </Field>
             <Field>
-              <FieldLabel htmlFor="name">Apellido</FieldLabel>
-              <Input id="name" type="text" placeholder="John Doe" required />
+              <FieldLabel htmlFor="lastName">Apellido paterno</FieldLabel>
+              <Input name="lastName" id="lastName" type="text" required />
+            </Field>
+            <Field>
+                <FieldLabel htmlFor="motherLastName">Apellido materno</FieldLabel>
+              <Input name="motherLastName" id="motherLastName" type="text" required />
             </Field>
             <Field>
               <FieldLabel htmlFor="email">Email</FieldLabel>
               <Input
+                name="email"
                 id="email"
                 type="email"
                 placeholder="m@example.com"
@@ -45,7 +51,7 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
             </Field>
             <Field>
               <FieldLabel htmlFor="password">Contraseña</FieldLabel>
-              <Input id="password" type="password" required />
+              <Input name="password" id="password" type="password" required />
               <FieldDescription>
                 Mínimo 8 caracteres.
               </FieldDescription>
@@ -54,7 +60,7 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
               <FieldLabel htmlFor="confirm-password">
                 Confirmar Contraseña
               </FieldLabel>
-              <Input id="confirm-password" type="password" required />
+              <Input name="confirmPassword" id="confirm-password" type="password" required />
             </Field>
             <FieldGroup>
               <Field>
