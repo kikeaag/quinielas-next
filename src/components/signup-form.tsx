@@ -14,6 +14,7 @@ import {
   FieldLabel,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import Link from "next/link"
 
 export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
   return (
@@ -66,7 +67,7 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
               <Field>
                 <Button type="submit">Crear cuenta</Button>
                 <FieldDescription className="px-6 text-center">
-                  Ya tienes una cuenta? <a href="#">Iniciar sesión</a>
+                  ¿Ya tienes una cuenta? <Link href="/login">Iniciar sesión</Link>
                 </FieldDescription>
               </Field>
             </FieldGroup>
